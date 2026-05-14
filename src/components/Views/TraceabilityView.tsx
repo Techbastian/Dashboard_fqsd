@@ -124,7 +124,6 @@ export default function TrazabilidadView() {
                 <th className="px-6 py-5 text-[11px] font-black text-slate-400 uppercase tracking-widest">Participante</th>
                 <th className="px-6 py-5 text-[11px] font-black text-slate-400 uppercase tracking-widest">Perfil TIC</th>
                 <th className="px-6 py-5 text-[11px] font-black text-slate-400 uppercase tracking-widest">Barrio</th>
-                <th className="px-6 py-5 text-[11px] font-black text-slate-400 uppercase tracking-widest">Resultado pre-inscripción</th>
                 <th className="px-6 py-5 text-[11px] font-black text-slate-400 uppercase tracking-widest">Estado</th>
                 <th className="px-6 py-5 text-[11px] font-black text-slate-400 uppercase tracking-widest text-right">Registro</th>
               </tr>
@@ -138,9 +137,6 @@ export default function TrazabilidadView() {
                 const barrio    = (app.custom_answers?.barrio      as string) ?? '—';
                 const fecha     = (app.custom_answers?.fecha_registro as string) ?? '—';
                 const initials  = name !== '—' ? name.split(' ').slice(0, 2).map(w => w[0]).join('') : '?';
-                const failedCriteria = isActive
-                  ? []
-                  : CRITERIA.filter(c => (app.custom_answers?.[c.key] as string) === 'NO CUMPLE').map(c => c.label);
 
                 return (
                   <tr
@@ -165,24 +161,6 @@ export default function TrazabilidadView() {
                       </span>
                     </td>
                     <td className="px-6 py-5 text-xs font-bold text-slate-600">{barrio}</td>
-                    <td className="px-6 py-5">
-                      {isActive ? (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[10px] font-black bg-emerald-50 text-emerald-700 border border-emerald-100">
-                          ✓ Criterios cumplidos
-                        </span>
-                      ) : (
-                        <div className="flex flex-wrap gap-1">
-                          {failedCriteria.length > 0
-                            ? failedCriteria.map(label => (
-                                <span key={label} className="px-2 py-0.5 rounded-md text-[10px] font-black bg-red-50 text-red-500 border border-red-100">
-                                  {label}
-                                </span>
-                              ))
-                            : <span className="text-[10px] text-slate-400 font-bold">Sin especificar</span>
-                          }
-                        </div>
-                      )}
-                    </td>
                     <td className="px-6 py-5">
                       <span className={`px-2.5 py-1 rounded-lg text-[10px] font-black uppercase ${
                         isActive
@@ -280,7 +258,7 @@ export default function TrazabilidadView() {
                   <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Criterios de elegibilidad</h4>
                   <div className="grid grid-cols-2 gap-3">
                     {CRITERIA.map(c => {
-                      const cumple = (selected.custom_answers?.[c.key] as string) === 'CUMPLE';
+                      const cumple = selected.custom_answers?.[c.key] === true;
                       return (
                         <div
                           key={c.key}
