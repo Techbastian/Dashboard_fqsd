@@ -21,14 +21,13 @@ interface SidebarProps {
 
 export default function Sidebar({ currentView, onViewChange }: SidebarProps) {
   const menuItems: { id: ViewType; label: string; icon: any }[] = [
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'embudo', label: 'Embudo', icon: Filter },
-    { id: 'formacion', label: 'Formación', icon: BookOpen },
-    { id: 'colocacion', label: 'Colocación', icon: Briefcase },
-    { id: 'retencion', label: 'Retención', icon: RefreshCw },
-    { id: 'empresas', label: 'Empresas', icon: Building2 },
+    { id: 'dashboard',    label: 'Dashboard',    icon: LayoutDashboard },
     { id: 'trazabilidad', label: 'Trazabilidad', icon: ClipboardList },
-    { id: 'calendario', label: 'Calendario', icon: CalendarIcon },
+    { id: 'formacion',    label: 'Formación',    icon: BookOpen },
+    { id: 'colocacion',   label: 'Colocación',   icon: Briefcase },
+    { id: 'retencion',    label: 'Retención',    icon: RefreshCw },
+    { id: 'empresas',     label: 'Empresas',     icon: Building2 },
+    { id: 'calendario',   label: 'Calendario',   icon: CalendarIcon },
   ];
 
   return (

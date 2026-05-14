@@ -1,6 +1,5 @@
 export type ViewType =
   | 'dashboard'
-  | 'embudo'
   | 'formacion'
   | 'colocacion'
   | 'retencion'

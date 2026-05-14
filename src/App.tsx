@@ -3,7 +3,6 @@ import { ViewType } from './types';
 import Header, { FilterBar } from './components/Header';
 import Sidebar from './components/Sidebar';
 import DashboardView from './components/Views/DashboardView';
-import EmbudoView from './components/Views/EmbudoView';
 import FormacionView from './components/Views/FormacionView';
 import ColocacionView from './components/Views/ColocacionView';
 import RetencionView from './components/Views/RetencionView';
@@ -15,14 +14,13 @@ import { FilterProvider } from './FilterContext';
 import { DataProvider } from './contexts/DataContext';
 
 const VIEW_LABELS: Record<ViewType, string> = {
-  dashboard: 'Dashboard',
-  embudo: 'Embudo',
-  formacion: 'Formación',
-  colocacion: 'Colocación',
-  retencion: 'Retención',
-  empresas: 'Empresas',
+  dashboard:    'Dashboard',
+  formacion:    'Formación',
+  colocacion:   'Colocación',
+  retencion:    'Retención',
+  empresas:     'Empresas',
   trazabilidad: 'Trazabilidad',
-  calendario: 'Calendario',
+  calendario:   'Calendario',
 };
 
 export default function App() {
@@ -31,7 +29,6 @@ export default function App() {
   const renderView = () => {
     switch (currentView) {
       case 'dashboard':    return <DashboardView />;
-      case 'embudo':       return <EmbudoView />;
       case 'formacion':    return <FormacionView />;
       case 'colocacion':   return <ColocacionView />;
       case 'retencion':    return <RetencionView />;
